@@ -1,0 +1,49 @@
+#intro:first-letter {
+    font-size: 300%;
+}
+
+h1 {
+    color: brown;
+    text-shadow: 4px 4px blue;
+}
+
+h2 {
+    color: brown;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+    font-size: 200%;
+}
+
+.red {
+    color: red;
+}
+
+.red a{
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.ref:hover{
+    color: lightblue;
+    background-color: darkgreen;
+}
+
+table,th,td {
+    border: solid;
+    border-collapse: collapse;
+    border-color: whitesmoke;
+    text-align: center;
+}

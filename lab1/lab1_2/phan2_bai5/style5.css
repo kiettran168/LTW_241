@@ -1,0 +1,139 @@
+.page {
+    background-image: url(images03/bg-body.png);
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.container {
+    background-color: white;
+    width: 53%;
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background-image: url(images03/bg-header.png);
+    background-size: 100% 100%;
+    height: 135px;
+
+    color: grey;
+    font-style: italic;
+    font-size: xx-large;
+    padding-left: 5%;
+    
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    background-image: url(images03/bg-menu.png);
+    background-size: cover;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 2%;
+}
+
+.menu a:hover {
+    background-image: url(images03/bg-menu-hover.png);
+    background-size: 95% 95%;
+}
+
+.body {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.content {
+    width: 100%;
+}
+
+.ad {
+    height: auto;
+    width: 100%;
+}
+
+.title {
+    font-size: x-large;
+    color: forestgreen;
+}
+
+.info {
+    font-size: small;
+    color: lightgray;
+}
+
+.content p{
+    line-height: 1.5em;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment img {
+    width: auto;
+    height: 100%;
+}
+
+.comment a{
+    text-decoration: none;
+    color: lightblue;
+}
+
+.sidebar {
+    width: 160px;
+    background-color: whitesmoke;
+    height: fit-content;
+}
+
+.feed {
+    background-image: url(images03/bg-feed.png);
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.option {
+    padding: 5%;
+}
+
+.feed img {
+    height: auto;
+    width: 70%;
+}
+
+.option {
+    list-style-type: none;
+    margin:0;
+}
+
+.option a{
+    text-decoration: none;
+    color: black;
+}
+
+.sb_bottom {
+    height: auto;
+    width: 100%;
+}
+
+.footer {
+    background-image: url(images03/bg-footer.png);
+    background-size: 100% 100%;
+    height: 100px;
+
+    display: flex;
+    align-items: end;
+    padding: 3%;
+    color: white;
+}
