@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lab2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+  <body>
+    <div class="container">
+        <div>
+            <button class="btn btn-primary" onclick="createTable()">Add table</button>
+            <button class="btn btn-primary" onclick="addRow()">Add row</button>
+            <button class="btn btn-primary" onclick="addColumn()">Add column</button>
+            <button class="btn btn-primary" onclick="deleteTable()">Delete table</button>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Row</span>
+                <input type="text" id="rowIndex">
+                <button class="btn btn-primary" onclick="deleteRow()">Delete</button>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Column</span>
+                <input type="text" id="colIndex">
+                <button class="btn btn-primary" onclick="deleteColumn()">Delete column</button>
+            </div>    
+            
+            
+        </div>
+        <div class="row" id="table-container">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        let table;
+        function createTable() {
+            deleteTable();
+            
+            table = document.createElement('table');
+            for (let i = 0; i < 2; i++) {
+                const row = table.insertRow();
+                for (let j = 0; j < 2; j++) {
+                    const cell = row.insertCell();
+                }
+            }
+
+            document.getElementById('table-container').appendChild(table);
+        }
+
+        function deleteTable() {
+            const tableContainer = document.getElementById('table-container');
+            tableContainer.innerHTML = '';
+            table = null;
+        }
+
+        function addRow() {
+            if (!table) {
+                alert('Create a table first!');
+                return;
+            }
+
+            const row = table.insertRow();
+            const colCount = table.rows[0].cells.length;
+            for (let i = 0; i < colCount; i++) {
+                const cell = row.insertCell();
+            }
+        }
+
+        function addColumn() {
+            if (!table) {
+                alert('Create a table first!');
+                return;
+            }
+
+            for (let i = 0; i < table.rows.length; i++) {
+                const cell = table.rows[i].insertCell();
+            }
+        }
+
+    function deleteRow() {
+        if (!table) {
+            alert('Create a table first!');
+            return;
+        }
+
+        const rowIndex = parseInt(document.getElementById('rowIndex').value);
+        if (isNaN(rowIndex) || rowIndex < 1 || rowIndex > table.rows.length) {
+            alert('Invalid row index');
+            return;
+        }
+
+        table.deleteRow(rowIndex - 1);
+    }
+
+    function deleteColumn() {
+        if (!table) {
+            alert('Create a table first!');
+            return;                     
+        }
+
+        const colIndex = parseInt(document.getElementById('colIndex').value);
+        if (isNaN(colIndex) || colIndex < 1 || colIndex > table.rows[0].cells.length) {
+            alert('Invalid column index');
+            return;
+        }
+
+        for (let i = 0; i < table.rows.length; i++) {
+            table.rows[i].deleteCell(colIndex - 1);
+        }
+    }                       
+    </script>
+  </body>
+</html>
