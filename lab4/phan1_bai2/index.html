@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lab4</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="input-group mb-3">
+                    <span class="input-group-text">Name:</span>
+                    <input type="text" id="name" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                    <span class="input-group-text">Value:</span>
+                    <input type="text" id="value" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                    <span class="input-group-text">Domain:</span>
+                    <input type="text" id="domain" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                    <span class="input-group-text">Path:</span>
+                    <input type="text" id="path" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-3">
+                    <span class="input-group-text">Expires:</span>
+                    <input type="date" id="expires" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary mb-3" onclick="addCookie()">Add/Edit</button>
+        </div>
+
+        <div class="row">
+            <button type="button" class="btn btn-primary mb-3" onclick="deleteCookie()">Delete</button>
+        </div>
+
+        <div class="row" id="list">
+        </div>
+    </div>
+
+    <script>
+    document.cookie = "username=John Doe; expires=Thu, 18 Dec 2033 12:00:00 UTC";
+    document.cookie = "testh=8; Expires= Fri, 01 Jan 2026 00:00:00 GMT";
+    </script>
+
+    <script>
+    document.getElementById('list').innerHTML=listCookies();
+
+    function listCookies() {
+        var theCookies = document.cookie.split(';');
+        var aString = '';
+        for (var i = 1 ; i <= theCookies.length; i++) {
+            aString += theCookies[i-1] + "\n" + "<br>";
+    }
+        return aString;
+    }
+
+    function addCookie() {
+        const name = document.getElementById('name').value;
+        const val = document.getElementById('value').value;
+        const domain = document.getElementById('domain').value;
+        const path = document.getElementById('path').value;
+        const date = new Date(document.getElementById('expires').value);
+
+        cookies = name + "=" + val;
+
+        if (domain.length > 0)
+            cookies += "; domain=" + domain;
+        
+        if (path.length > 0)
+            cookies += "; path=" + path;
+
+        if (date)
+            cookies += "; expires=" + date.toGMTString();
+
+        document.cookie = cookies;
+        document.getElementById('list').innerHTML=listCookies();
+    }  
+    
+    function deleteCookie() {
+        const name = document.getElementById('name').value;
+        const date = new Date();
+        date.setTime(date.getTime()-(24*60*60*1000));
+
+
+        cookies = name + "=";
+        cookies += "; expires=" + date.toGMTString();
+
+        document.cookie = cookies;
+        document.getElementById('list').innerHTML=listCookies();
+    }  
+    </script>
+
+  </body>
+</html>
